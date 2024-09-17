@@ -1,14 +1,13 @@
 package com.amc.services.orass;
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.amc.model.orass.Policy;
 import com.amc.repository.orass.PolicyRepo;
-
-import java.util.List;
 
 @Service
 public class PolicyService {
@@ -31,12 +30,11 @@ public class PolicyService {
         return this.policyRepo.findByPolNumber(polNumber).orElse(null);
     }
 
-    // public List<Policy> findByPhone(String phone) {
+    // public List<Policy> findAllPhone(String phone) {
     // return null;
     // }
-
     @Transactional(readOnly = true)
-    public List<Policy> findByPhone(String phone) {
+    public List<Policy> findAllPhone(String phone) {
         return this.policyRepo.findAllPhone(phone);
     }
 
