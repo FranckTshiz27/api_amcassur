@@ -1,10 +1,19 @@
 package com.amc.services.amc;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.logging.Logger;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.amc.enums.HttpStatusResponse;
 import com.amc.httpResponse.HttpResponse;
 import com.amc.model.myamc.CInfoBip;
 import com.amc.model.myamc.COtp;
-import com.amc.model.myamc.Keyclaokcredential;
 import com.amc.repository.myamc.COtpRepository;
 import com.amc.utils.DateUtils;
 import com.amc.utils.OtpUtils;
@@ -12,17 +21,6 @@ import com.amc.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.util.Map;
-import java.nio.file.Paths;
-// import org.apache.tomcat.jni.File;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.logging.Logger;
 
 @Service
 @AllArgsConstructor
@@ -44,6 +42,7 @@ public class COtpService {
             httpResponse = new HttpResponse();
 
             COtp cOtpCheck = this.cOtpRepository.findByUsername(username);
+            System.out.println("COTP : "+cOtpCheck);
 
             if (cOtpCheck != null) {
 

@@ -16,6 +16,7 @@ public interface Routes {
     public static String GET_USERS_BY_REALM_AND_USERNAME = "v1/get-many-by-realm/{realm}/{username}"; //
     public static String GET_ROLES_BY_REALM_AND_CLIENT_AND_USER = "v1/get-by-realm-client-user/{realm}/{client}/{user}"; //
     public static String riskUri = BASE_URI_MOBILE + "/risk";
+    public static String GET_ACCOUNT = "/v1/get-profil/{username}";
     // URI AMCASSUR
     public static String CREATE_USER = "user/v1/create/"; //
     public static String CREATE_SETTING = "v1/create/"; //

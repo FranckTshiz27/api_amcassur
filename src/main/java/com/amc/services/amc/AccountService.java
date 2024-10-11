@@ -1,8 +1,33 @@
 package com.amc.services.amc;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+
 import com.amc.configs.Data.Constants;
 import com.amc.dto.UpdateAccountDTO;
-import com.amc.dto.keyclaok.*;
+import com.amc.dto.keyclaok.AccountDTO;
+import com.amc.dto.keyclaok.AccountKeycloakDTO;
+import com.amc.dto.keyclaok.CredentialsDTO;
+import com.amc.dto.keyclaok.TokenDTO;
+import com.amc.dto.keyclaok.UserChangePassDTO;
+import com.amc.dto.keyclaok.UserDTO;
 import com.amc.enums.HttpStatusResponse;
 import com.amc.httpResponse.HttpResponse;
 import com.amc.model.myamc.Account;
@@ -11,19 +36,8 @@ import com.amc.repository.myamc.AccountRepository;
 import com.amc.routes.Routes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.http.*;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-import java.util.HashMap;
-import java.io.*;
-import java.util.Map;
-import java.nio.file.Paths;
 
 @Slf4j
 @Service
@@ -348,6 +362,50 @@ public class AccountService {
     }
 
   }
+
+   public HttpResponse getProfilUser(String username) {
+
+        HttpResponse httpResponse = null;
+        try {
+
+            // Update user
+            Account user = this.accountRepository.findByUsername(username);
+            if (user.getId() == null) {
+                httpResponse = new HttpResponse();
+                httpResponse.setCode(404);
+                httpResponse.setMessage("Le compte d'utilisateur inexistant.");
+                httpResponse.setStatus(HttpStatusResponse.ERROR.name());
+
+            } else {
+
+                if (user.getPhotoProfil() != null) {
+                    httpResponse = new HttpResponse();
+                    httpResponse.setCode(200);
+                    httpResponse.setMessage("Le compte a été trouvé avec une photo de profil succès");
+                    httpResponse.setData(user);
+                    httpResponse.setStatus(HttpStatusResponse.SUCCESS.name());
+
+                } else {
+                    httpResponse = new HttpResponse();
+                    httpResponse.setCode(200);
+                    user.setPhotoProfil("");
+                    httpResponse.setData(user);
+                    httpResponse.setMessage("Le compte a été trouvé avec une photo de profil succès");
+                    httpResponse.setStatus(HttpStatusResponse.SUCCESS.name());
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            httpResponse = new HttpResponse();
+            httpResponse.setCode(500);
+            httpResponse.setMessage("Une erreur s'est produite pendant le traitement de la requête");
+            httpResponse.setStatus(HttpStatusResponse.ERROR.name());
+            httpResponse.setData(e);
+        }
+        return httpResponse;
+
+    }
 
   private Account accoutDtoToAccount(AccountDTO accountDTO) {
     Account account = new Account();

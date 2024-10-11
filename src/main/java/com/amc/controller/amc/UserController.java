@@ -24,16 +24,16 @@ public class UserController {
 
     @GetMapping(path = Routes.GET_USER_BY_REALM)
     public ResponseEntity<List<User>> getUsersByRealm(@PathVariable("realm") String realm) {
-        List<User> users = this.userService.findByRealmId("rawsur");
+        List<User> users = this.userService.findByRealmId(realm);
         return ResponseEntity.ok().body(users);
     }
 
     @GetMapping(path = Routes.GET_USER_BY_REALM_AND_USERNAME)
     public ResponseEntity<User> getUserByRealmAndUsername(@PathVariable("realm") String realm,
             @PathVariable("username") String username) {
-        System.out.println(" AAAAAAAAAAAAADDDDDDDDDDDDDDDDDDD MMMMMMMMMMMMMMM ".repeat(50));
+        System.out.println("REALM : "+realm);
+        System.out.println("USERNAME : "+username);
         User user = this.userService.findByRealmIdAndUsername(realm, username);
-        System.out.println(" 0000000000000000000 MMMMMMMMMMMMMMM ".repeat(50));
         return ResponseEntity.ok().body(user);
     }
 
