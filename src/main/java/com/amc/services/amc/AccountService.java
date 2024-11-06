@@ -130,7 +130,7 @@ public class AccountService {
             log.debug("httpEntity (BODY) : " + httpEntity.getBody());
             log.debug("httpEntity (HEADER) : " + httpEntity.getHeaders());
 
-            String url_create_user = Routes.CREATE_USER_KEYCLAOK_TEST;
+            String url_create_user = Routes.CREATE_USER_KEYCLAOK;
             log.info("URL : " + url_create_user);
 
             // send POST request
@@ -263,7 +263,7 @@ public class AccountService {
             // build the request
             HttpEntity<Map<String, Object>> httpEntity = new HttpEntity<>(objectMap, headers_create_user);
 
-            String url_create_user = Routes.CREATE_USER_KEYCLAOK_TEST + "/{userId}";
+            String url_create_user = Routes.CREATE_USER_KEYCLAOK + "/{userId}";
 
             // send PUT request
             ResponseEntity<String> responseEntity = restTemplate_create_user.exchange(url_create_user, HttpMethod.PUT,

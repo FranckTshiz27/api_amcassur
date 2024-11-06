@@ -27,13 +27,20 @@ public interface Routes {
     public static String OTP_REQUEST = "user/v1/otp-send/"; //
     public static String OTP_VERIFY = "user/v1/otp-verify/"; //
 
-    public static String CREATE_USER_KEYCLAOK = "http://192.168.88.82:8180/auth/admin/realms/rawsur/users";
-    // public static String CREATE_USER_KEYCLAOK_TEST = "http://192.168.88.82:8180/auth/admin/realms/rawsur-test/users";
-    public static String GET_TOKEN_KEYCLAOK = "http://192.168.88.82:8180/auth/realms/master/protocol/openid-connect/token";
-    public static String GET_USER = "http://192.168.88.82:9006/api/keycloak/user/";
+    public static String CREATE_USER_KEYCLAOK = "http://10.10.10.17:8180/admin/realms/amc-mobile/users";
+    public static String GET_TOKEN_KEYCLAOK = "http://10.10.10.17:8180/realms/master/protocol/openid-connect/token";
+    public static String GET_USER = "http://10.10.10.17:9006/api/keycloak/user/";
     public static String UPDATE_USER_MYRAWSUR = "v1/update-user-myrawsur/"; //
 
     // File file = Paths.get("C:/config/keyclaokcredential.json").toFile();
-    public static String CREATE_USER_KEYCLAOK_TEST = "http://192.168.88.82:8180/auth/admin/realms/rawsur-test/users";
+    // public static String CREATE_USER_KEYCLAOK_TEST = "http://10.10.10.17:8180/admin/realms/rawsur-test/users";
+
+    // public static String CREATE_USER_KEYCLAOK = "http://192.168.88.82:8180/auth/admin/realms/rawsur/users";
+    // public static String GET_TOKEN_KEYCLAOK = "http://192.168.88.82:8180/auth/realms/master/protocol/openid-connect/token";
+    // public static String GET_USER = "http://192.168.88.82:9006/api/keycloak/user/";
+    // public static String UPDATE_USER_MYRAWSUR = "v1/update-user-myrawsur/"; //
+
+    // // File file = Paths.get("C:/config/keyclaokcredential.json").toFile();
+    // public static String CREATE_USER_KEYCLAOK_TEST = "http://192.168.88.82:8180/auth/admin/realms/rawsur-test/users";
 
 }
