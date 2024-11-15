@@ -1,8 +1,19 @@
 package com.amc;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.xml.bind.DatatypeConverter;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.amc.exceptions.NotFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,16 +28,8 @@ public class ApiAmcAssur implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("Server run");
-
-        // CKeyclaokCredentialApi keyclaok = new CKeyclaokCredentialApi();
-        // keyclaok.setId("63e12c6348c1786c7ce3638d");
-        // keyclaok.setUsername("admin");
-        // // keyclaok.setUsername("kevin");
-        // keyclaok.setPassword("Rawsur2022$");
-        // // keyclaok.setPassword("12345678");
-        // keyclaok.setClientid("admin-cli");
-        // keyclaok.setGranttype("password");
-        // this.accountService.getToken(keyclaok);
     }
+
+     
 
 }

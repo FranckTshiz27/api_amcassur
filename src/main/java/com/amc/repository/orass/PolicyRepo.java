@@ -40,7 +40,7 @@ public interface PolicyRepo extends PagingAndSortingRepository<Policy, String> {
         @Query(value = "SELECT * FROM V_MOBILE_POLICY WHERE PHONE LIKE %:phone%", nativeQuery = true)
         List<Policy> findOnePhone(String phone);
 
-        @Query(value = "SELECT * FROM V_ARCA_POLICE", nativeQuery = true)
+        @Query(value = "SELECT * FROM V_MOBILE_POLICY", nativeQuery = true)
         List<Policy> getAll();
 
 }

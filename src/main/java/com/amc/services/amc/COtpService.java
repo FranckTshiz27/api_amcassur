@@ -74,7 +74,7 @@ public class COtpService {
                         httpResponse.setStatus(HttpStatusResponse.EMPTY_SETTING_INFO_BIP.name());
                     } else {
                         boolean responseSendOtp = OtpUtils.sendOtpWithHttp(SENDER, prefix_country + cOtp.getUsername(),
-                                "Votre code My Rawsur est : " + cOtp.getCode(), infoBip);
+                                "Votre code My Amcassur est : " + cOtp.getCode(), infoBip);
 
                         // OTP bien envoyé par SMS
                         if (responseSendOtp) {
@@ -122,7 +122,7 @@ public class COtpService {
                     } else {
                         // on envoie l'opt via une requete http
                         boolean responseSendOtp = OtpUtils.sendOtpWithHttp(SENDER, prefix_country + cOtp.getUsername(),
-                                "Votre code My Rawsur est : " + cOtp.getCode(), infoBip);
+                                "Votre code My Amcassur est : " + cOtp.getCode(), infoBip);
 
                         // OTP bien envoyé par SMS
                         if (responseSendOtp) {
@@ -180,6 +180,8 @@ public class COtpService {
                     logger.info("OTP VALIDE");
                     this.cOtpRepository.deleteAllByUsername(username);
 
+                    System.out.println("SUPPRESSION OTP OK");
+                    logger.info("SUPPRESSION OTP OK");
                     httpResponse.setCode(200);
                     httpResponse.setMessage("L'OTP trouvé avec succès");
                     httpResponse.setStatus(HttpStatusResponse.OTP_OK.name()); // Le client va vérifier cette valeur pour
@@ -199,6 +201,7 @@ public class COtpService {
             httpResponse.setData(e);
             return httpResponse;
         }
+        logger.info("OTP OK");
         return httpResponse;
     }
 

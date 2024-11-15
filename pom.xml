@@ -84,7 +84,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>rawsur-api-keycloak-users</finalName>
+		<finalName>api-amcassur</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

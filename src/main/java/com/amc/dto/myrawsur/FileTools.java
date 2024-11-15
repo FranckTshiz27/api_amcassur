@@ -18,7 +18,7 @@ public class FileTools {
   public String saveFile(String base64String, String name) {
     log.info("Début SAVE FILE");
     // String path = "temp\\" + name;
-    String path = "C:\\Servers\\api-myrawsur\\temp\\" + name;
+    String path = "C:\\Servers\\amcassur\\api-amcassur\\temp\\" + name;
     byte[] data = DatatypeConverter.parseBase64Binary(base64String);
 
     File file = new File(path);

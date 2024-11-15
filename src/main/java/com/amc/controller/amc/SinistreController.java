@@ -82,4 +82,9 @@ public class SinistreController {
     return ResponseEntity.status(HttpStatus.OK).body(count);
   }
 
+  @GetMapping(path = "v1/assistance")
+  public ResponseEntity<String> getAssistanceNumber() {
+    return ResponseEntity.status(HttpStatus.OK).body("+242067387178");
+  }
+
 }

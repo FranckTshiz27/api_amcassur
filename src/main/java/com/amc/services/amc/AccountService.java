@@ -414,7 +414,7 @@ public class AccountService {
     account.setLastName(accountDTO.getLastName());
     account.setFirstName(accountDTO.getFirstName());
     account.setPhotoProfil(accountDTO.getPhotoProfil());
-    account.setEmail(accountDTO.getEmail());
+    // account.setEmail(accountDTO.getEmail());
     account.setEnabled(accountDTO.isEnabled());
     account.setEmailVerified(accountDTO.isEmailVerified());
     account.setTotp(accountDTO.isTotp());

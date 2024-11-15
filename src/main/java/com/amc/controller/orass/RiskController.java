@@ -9,7 +9,7 @@ import com.amc.routes.Routes;
 import com.amc.services.orass.RiskService;
 
 import java.util.List;
-@RequestMapping(path = Routes.BASE_URL_MY_AMC)
+@RequestMapping(path = Routes.BASE_URL_MY_AMC+ "risk")
 @RestController
 @AllArgsConstructor
 public class RiskController {
